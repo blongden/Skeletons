@@ -1,3 +1,5 @@
+Yes I know you can use composer create-project to initialise new repos. I like to use this system so that I can add to existing composer.json files.
+
 # Usage
 
 Add the bin to your $PATH directory:
