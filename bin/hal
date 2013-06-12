@@ -1,2 +1,3 @@
 #!/bin/bash
-composify nocarrier/hal "0.9.*"
+composify
+php composer.phar require nocarrier/hal:0.9.*
