@@ -1,0 +1,25 @@
+#!/bin/bash
+
+dir=`dirname $0`
+composerjson=$dir/../files/composer.json
+
+if [ ! -f composer.json ]; then
+    echo 'composer.json not found - creating it for you'
+else
+    echo 'updating composer.json with silex'
+    mv composer.json composer.json.old
+    composerjson=composer.json.old
+fi
+
+cat $composerjson | jq '.require |= {"silex/silex": "1.0.0@dev", "twig/twig": ">=1.8,<2.0-dev", "symfony/twig-bridge": "~2.3"}'> composer.json
+
+if [ ! -f composer.phar ]; then
+    curl -s https://getcomposer.org/installer | php
+else
+    php composer.phar self-update
+fi
+
+php composer.phar update
+
+echo 'copying in templates'
+cp -r $dir/../files/silex/* .
