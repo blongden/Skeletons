@@ -1,0 +1,14 @@
+#!/bin/bash
+
+dir=`dirname $0`
+composerjson=$dir/../files/composer.json
+
+if [ ! -f composer.json ]; then
+    echo "creating composer.json with $1"
+else
+    echo "updating composer.json with $1"
+    mv composer.json composer.json.old
+    composerjson=composer.json.old
+fi
+
+cat $composerjson | jq ".require += {\"$1\": \"$2\"}" >> composer.json
