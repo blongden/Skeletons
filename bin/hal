@@ -1,0 +1,2 @@
+#!/bin/bash
+composify nocarrier/hal "0.9.*"

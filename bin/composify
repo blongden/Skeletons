@@ -12,3 +12,11 @@ else
 fi
 
 cat $composerjson | jq ".require += {\"$1\": \"$2\"}" >> composer.json
+
+if [ ! -f composer.phar ]; then
+    curl -s https://getcomposer.org/installer | php
+else
+    php composer.phar self-update
+fi
+
+php composer.phar update

@@ -5,13 +5,5 @@ composify silex/silex "1.0.0@dev"
 composify twig/twig ">=1.8,<2.0-dev"
 composify symfony/twig-bridge "~2.3"
 
-if [ ! -f composer.phar ]; then
-    curl -s https://getcomposer.org/installer | php
-else
-    php composer.phar self-update
-fi
-
-php composer.phar update
-
 echo 'copying in templates'
 cp -r $dir/../files/silex/* .
