@@ -1,0 +1,13 @@
+#!/bin/bash
+
+composify behat/behat "2.4.*@stable" --noupdate
+composify behat/mink-extension "1.1.*" --noupdate
+composify behat/mink-goutte-driver "1.0.*" --noupdate
+composify phpspec/phpspec "2.0.*@dev" --noupdate
+composify sensiolabs/behat-page-object-extension "*" --noupdate
+
+mv composer.json composer.json.old
+cat composer.json.old | jq '. += {"config": {"bin-dir": "bin/"}}' > composer.json
+rm -f composer.json.old
+
+php composer.phar update

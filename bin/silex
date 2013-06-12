@@ -1,8 +1,8 @@
 #!/bin/bash
 
 dir=`dirname $0`
-composify silex/silex "1.0.0@dev"
-composify twig/twig ">=1.8,<2.0-dev"
+composify silex/silex "1.0.0@dev" --noupdate
+composify twig/twig ">=1.8,<2.0-dev" --noupdate
 composify symfony/twig-bridge "~2.3"
 
 echo 'copying in templates'
