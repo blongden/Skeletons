@@ -2,11 +2,6 @@
 
 composify 
 php composer.phar require \
-    "behat/behat:2.4.*@stable" \
-    "behat/mink:1.4.*@stable" \
-    "behat/mink-extension:*" \
-    "behat/mink-goutte-driver:*" \
-    "behat/mink-selenium2-driver:*" \
     "phpspec/phpspec:2.0.*@dev" \
     --dev --no-update
 
@@ -15,6 +10,3 @@ cat composer.json.old | jq '. += {"config": {"bin-dir": "bin/"}}' > composer.jso
 rm -f composer.json.old
 
 php composer.phar update
-bin/behat --init
-echo 'copying in templates'
-cp -r `dirname $0`/../files/bddify/* .
