@@ -13,6 +13,10 @@ $app->register(
     )
 );
 
+if ($app['debug']) {
+    $app->register(new Whoops\Provider\Silex\WhoopsServiceProvider);
+}
+
 $app->get('/', 'Nocarrier\Controller\IndexController::indexAction');
 
 $app->run();

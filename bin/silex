@@ -2,7 +2,7 @@
 
 dir=`dirname $0`
 composify
-php composer.phar require "silex/silex:1.0.0@dev" "twig/twig:>=1.8,<2.0-dev" "symfony/twig-bridge:~2.3"
+php composer.phar require "silex/silex" "twig/twig" "symfony/twig-bridge" "filp/whoops"
 
 echo 'copying in templates'
 cp -r $dir/../files/silex/* .
